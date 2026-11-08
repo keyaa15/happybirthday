@@ -1,0 +1,1278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Kirsten!</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --blue: #55c8ff;
+    --purple: #a66bff;
+    --pink: #ff8edb;
+    --dark: #09091d;
+    --panel: rgba(20, 18, 55, 0.94);
+    --white: #f7f2ff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+    overscroll-behavior: none;
+}
+
+body {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, #25205b 0, transparent 35%),
+        radial-gradient(circle at 80% 80%, #30134e 0, transparent 40%),
+        var(--dark);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 10px var(--blue);
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.4); }
+}
+
+
+
+.screen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.screen.active {
+    display: flex;
+}
+
+#screen-photos {
+    overflow: hidden;
+}
+
+.panel {
+    width: min(650px, 95%);
+    max-height: 95%;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    padding: clamp(15px, 3vh, 30px);
+    border: 2px solid rgba(125, 126, 255, .8);
+    border-radius: 18px;
+    background: var(--panel);
+    box-shadow:
+        0 0 15px rgba(85, 200, 255, .3),
+        0 0 35px rgba(166, 107, 255, .2),
+        inset 0 0 20px rgba(166, 107, 255, .08);
+}
+
+.pixel {
+    font-family: 'Press Start 2P', monospace;
+    line-height: 1.7;
+}
+
+h1 {
+    color: var(--blue);
+    font-size: clamp(17px, 3vw, 27px);
+    text-shadow: 0 0 12px var(--blue);
+    margin-bottom: 18px;
+}
+
+h2 {
+    color: var(--pink);
+    font-size: clamp(13px, 2.3vw, 19px);
+    margin-bottom: 14px;
+}
+
+p {
+    font-size: clamp(12px, 2vw, 15px);
+    line-height: 1.8;
+    color: #e5dcff;
+}
+
+.small-text {
+    font-size: 10px;
+    color: #bdb2ed;
+    margin-top: 12px;
+}
+
+
+.arcade-btn {
+    border: 2px solid var(--blue);
+    background: linear-gradient(135deg, #29206a, #542a87);
+    color: white;
+    padding: 13px 19px;
+    margin: 9px 5px 0;
+    border-radius: 9px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    line-height: 1.8;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(85, 200, 255, .4);
+    transition: .2s;
+    touch-action: none;
+}
+
+.arcade-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #4934a3, #783ba9);
+    box-shadow: 0 0 20px var(--purple);
+}
+
+.arcade-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+.arcade-label {
+    display: inline-block;
+    padding: 7px 12px;
+    border: 1px solid var(--pink);
+    border-radius: 5px;
+    color: var(--pink);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    margin-bottom: 20px;
+}
+
+.start-decoration {
+    font-size: 50px;
+    color: var(--purple);
+    text-shadow: 0 0 20px var(--purple);
+    margin: 12px 0 20px;
+}
+
+
+
+.cake-scene {
+    position: relative;
+    width: 100%;
+    height: min(36vh, 330px);
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 800px;
+    margin: 5px auto;
+}
+
+.cake {
+    position: relative;
+    width: 220px;
+    height: 190px;
+    transform-style: preserve-3d;
+    transform: rotateX(-8deg);
+}
+
+.cake-base {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 200px;
+    height: 75px;
+    border-radius: 10px 10px 20px 20px;
+    background: linear-gradient(90deg, #7135b7, #c17aff, #7135b7);
+    box-shadow: 0 12px 0 #46206f, 0 20px 30px rgba(0,0,0,.4);
+}
+
+.cake-top {
+    position: absolute;
+    top: 115px;
+    left: 10px;
+    width: 200px;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #e7baff, #a76be5);
+    z-index: 2;
+}
+
+/* Smaller second tier placed on top of the main cake */
+.cake-upper-tier {
+    position: absolute;
+    width: 140px;
+    height: 55px;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.cake-upper-body {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 140px;
+    height: 43px;
+    border-radius: 9px 9px 15px 15px;
+    background: linear-gradient(90deg, #813bc0, #d18aff, #813bc0);
+    box-shadow: 0 5px 0 #5a278e;
+}
+
+.cake-upper-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 25px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #f0ceff, #c58aef);
+    z-index: 2;
+}
+
+.cake-upper-frosting {
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 140px;
+    height: 12px;
+    border-radius: 0 0 8px 8px;
+    background: #e7baff;
+    z-index: 3;
+}
+
+.cake-frosting {
+    position: absolute;
+    top: 135px;
+    left: 10px;
+    width: 200px;
+    height: 20px;
+    background: #e7baff;
+    border-radius: 0 0 12px 12px;
+    z-index: 3;
+}
+
+.cake-frosting::before,
+.cake-frosting::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 15px;
+    height: 25px;
+    background: #e7baff;
+    border-radius: 0 0 10px 10px;
+}
+
+.cake-frosting::before {
+    left: 45px;
+}
+
+.cake-frosting::after {
+    right: 45px;
+}
+
+.cake-plate {
+    position: absolute;
+    bottom: -15px;
+    left: -5px;
+    width: 230px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #55c8ff, #c3efff, #55c8ff);
+    box-shadow: 0 0 15px rgba(85, 200, 255, .5);
+}
+
+
+.candles {
+    position: absolute;
+    bottom: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 18px;
+    z-index: 6;
+}
+
+.candle {
+    position: relative;
+    bottom: 0;
+    left: auto !important;
+    flex: 0 0 9px;
+    width: 9px;
+    height: 42px;
+    border-radius: 3px;
+    background: repeating-linear-gradient(
+        45deg,
+        #ffffff 0 5px,
+        #8c6cff 5px 10px
+    );
+    z-index: 5;
+}
+
+
+
+
+.flame {
+    position: absolute;
+    width: 13px;
+    height: 19px;
+    top: -19px;
+    left: -2px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background: #ffcf5c;
+    box-shadow: 0 0 12px #ffb347, 0 0 22px #ff8d42;
+    animation: flicker .4s infinite alternate;
+}
+
+@keyframes flicker {
+    from { transform: rotate(-45deg) scale(.9); }
+    to { transform: rotate(-42deg) scale(1.1); }
+}
+
+.flame.out {
+    display: none;
+}
+
+.smoke {
+    position: absolute;
+    top: -26px;
+    left: -2px;
+    width: 13px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(210, 210, 230, .55);
+    filter: blur(5px);
+    animation: smokeUp 1s ease-out forwards;
+}
+
+@keyframes smokeUp {
+    to {
+        transform: translateY(-30px) scale(2);
+        opacity: 0;
+    }
+}
+
+.blow-instruction {
+    color: var(--pink);
+    font-size: 12px;
+    margin: 8px 0;
+}
+
+
+.gift-area {
+    height: min(35vh, 310px);
+    min-height: 180px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    margin: 5px 0;
+}
+
+.gift {
+    position: relative;
+    width: 155px;
+    height: 120px;
+    margin-top: 50px;
+    z-index: 2;
+}
+
+.gift-body {
+    position: absolute;
+    bottom: 0;
+    width: 155px;
+    height: 100px;
+    border-radius: 5px 5px 12px 12px;
+    background: linear-gradient(135deg, #a56bff, #5425a0);
+    box-shadow: 0 12px 25px rgba(0,0,0,.4);
+}
+
+.gift-body::before {
+    content: "";
+    position: absolute;
+    left: 65px;
+    width: 25px;
+    height: 100%;
+    background: #f4b4ff;
+}
+
+.gift-lid {
+    position: absolute;
+    top: 0;
+    left: -8px;
+    width: 171px;
+    height: 28px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #d1a5ff, #8849d4);
+    transform-origin: left bottom;
+    transition: transform .8s ease;
+    z-index: 4;
+}
+
+.gift.open .gift-lid {
+    transform: translate(-15px, -65px) rotate(-28deg);
+}
+
+.gift-bow {
+    position: absolute;
+    top: -22px;
+    left: 57px;
+    width: 42px;
+    height: 25px;
+    z-index: 5;
+    transition: opacity .3s;
+}
+
+.gift-bow::before,
+.gift-bow::after {
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 18px;
+    border: 6px solid #ffb6ef;
+    border-radius: 50% 50% 0 50%;
+}
+
+.gift-bow::before {
+    left: -10px;
+    transform: rotate(20deg);
+}
+
+.gift-bow::after {
+    right: -10px;
+    transform: rotate(70deg);
+}
+
+.gift.open .gift-bow {
+    opacity: 0;
+}
+
+
+.flower {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    z-index: 3;
+    font-size: 42px;
+    color: var(--pink);
+    text-shadow: 0 0 15px var(--pink), 0 0 25px var(--purple);
+    pointer-events: none;
+    animation: flowerPop 2.3s ease-out forwards;
+}
+
+
+@keyframes flowerPop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 20px) scale(.3) rotate(0deg);
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(
+            calc(-50% + var(--x)),
+            -220px
+        ) scale(1.1) rotate(var(--rotation));
+    }
+}
+
+/* BONUS LEVEL */
+
+.bonus-card {
+    position: relative;
+    margin: 20px auto;
+    max-width: 440px;
+    min-height: 145px;
+    padding: 22px 15px;
+    border: 2px dashed var(--purple);
+    border-radius: 12px;
+    background: rgba(94, 47, 151, .15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bonus-question {
+    color: var(--blue);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.bonus-reveal {
+    color: #ffe0fa;
+    font-size: 14px;
+    line-height: 1.9;
+    animation: appear .7s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+.letter {
+    max-width: 500px;
+    max-height: 65vh;
+    overflow-y: auto;
+    margin: 15px auto 0;
+    padding: 20px;
+    text-align: left;
+    border: 1px solid rgba(255, 142, 219, .7);
+    border-radius: 12px;
+    background: rgba(255,255,255,.04);
+    scrollbar-width: thin;
+    scrollbar-color: var(--purple) transparent;
+}
+
+.letter h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.letter p {
+    margin-bottom: 13px;
+    font-size: 13px;
+}
+
+
+
+.confetti {
+    position: fixed;
+    top: -15px;
+    width: 8px;
+    height: 12px;
+    z-index: 20;
+    pointer-events: none;
+    animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+
+@media (max-height: 650px) {
+    .panel {
+        padding: 12px;
+    }
+
+    .cake-scene {
+        height: 230px;
+    }
+
+    .gift-area {
+        height: 210px;
+    }
+
+    .start-decoration {
+        font-size: 35px;
+        margin: 5px 0 10px;
+    }
+
+    .letter {
+        max-height: 55vh;
+        padding: 13px;
+    }
+
+    .arcade-btn {
+        padding: 9px 12px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .panel {
+        width: 98%;
+        padding: 13px 9px;
+    }
+
+    .cake {
+        transform: scale(.85) rotateX(-8deg);
+    }
+
+    .letter p {
+        font-size: 12px;
+    }
+}
+
+
+
+.memories-panel {
+    width: min(900px, 96%);
+    height: 95%;
+    max-height: 95%;
+    min-height: 0;
+    padding: clamp(12px, 2.2vh, 22px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.memories-grid {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 4px 6px 8px 2px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--purple) rgba(255,255,255,.06);
+}
+
+.memories-grid::-webkit-scrollbar {
+    width: 7px;
+}
+
+.memories-grid::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+}
+
+.memories-grid::-webkit-scrollbar-thumb {
+    background: var(--purple);
+    border-radius: 10px;
+}
+.memories-panel h1 { margin-bottom: 8px; }
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    margin: 14px auto 10px;
+}
+.memory-card {
+    min-width: 0;
+    padding: 6px;
+    border: 1px solid rgba(166, 107, 255, .75);
+    border-radius: 9px;
+    background: rgba(255,255,255,.05);
+    box-shadow: 0 0 10px rgba(85, 200, 255, .12);
+}
+.memory-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(85, 200, 255, .5);
+}
+.memory-date {
+    display: block;
+    margin-top: 6px;
+    color: var(--pink);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+.memory-number {
+    display: block;
+    color: #bdb2ed;
+    font-size: 8px;
+    margin-top: 3px;
+}
+@media (max-width: 550px) {
+    .memories-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+    .memory-card { padding: 4px; }
+    .memory-card img { height: auto; }
+    .memory-date { font-size: 8px; }
+    .memory-number { font-size: 7px; }
+}
+@media (max-height: 650px) {
+    .memories-grid { gap: 6px; margin: 8px auto; }
+    .memory-card img { height: auto; }
+    .memories-panel .arcade-label { margin-bottom: 8px; }
+    .memories-panel p { font-size: 11px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background" id="background"></div>
+
+<!-- START SCREEN -->
+<section class="screen active" id="screen-start">
+    <div class="panel">
+        <div class="arcade-label">PLAYER 1: KIRSTEN</div>
+
+        <div class="start-decoration">★</div>
+
+        <h1 class="pixel">HAPPY BIRTHDAY!</h1>
+
+        <h2>Welcome to your birthday arcade!</h2>
+
+        <p>
+            A special adventure has been prepared just for you.
+            Complete each level to unlock your birthday surprises.
+        </p>
+
+        <button class="arcade-btn" onclick="goToScreen('screen-cake')">
+            START GAME
+        </button>
+
+        <p class="small-text">INSERT COIN TO BEGIN</p>
+    </div>
+</section>
+
+<!-- CAKE SCREEN -->
+<section class="screen" id="screen-cake">
+    <div class="panel">
+        <div class="arcade-label">LEVEL 01</div>
+
+        <h1 class="pixel">MAKE A WISH!</h1>
+
+        <p>Your birthday cake is ready</p>
+        <p>Hold the button to blow out all five candles!</p>
+
+        <div class="cake-scene">
+            <div class="cake">
+                <div class="cake-plate"></div>
+                <div class="cake-base"></div>
+                <div class="cake-top"></div>
+                <div class="cake-frosting"></div>
+
+                <div class="cake-upper-tier">
+                    <div class="cake-upper-body"></div>
+                    <div class="cake-upper-top"></div>
+                    <div class="cake-upper-frosting"></div>
+                </div>
+
+                <div class="candles">
+                    <div class="candle" id="candle-1">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle" id="candle-2">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle" id="candle-3">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle" id="candle-4">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle" id="candle-5">
+                        <div class="flame"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="blow-instruction" id="blow-status">
+            Hold the button until all candles go out.
+        </p>
+
+        <button
+            class="arcade-btn"
+            id="blow-button"
+            onpointerdown="startBlowing(event)"
+            onpointerup="stopBlowing()"
+            onpointerleave="stopBlowing()"
+            onpointercancel="stopBlowing()">
+            HOLD TO BLOW
+        </button>
+
+        <br>
+
+        <button
+            class="arcade-btn hidden"
+            id="cake-next"
+            onclick="goToScreen('screen-gift')">
+            NEXT LEVEL
+        </button>
+    </div>
+</section>
+
+<!-- GIFT SCREEN -->
+<section class="screen" id="screen-gift">
+    <div class="panel">
+        <div class="arcade-label">LEVEL 02</div>
+
+        <h1 class="pixel">A SPECIAL GIFT!</h1>
+
+        <p>There's something waiting inside this box.</p>
+        <p>Open it and see your surprise!</p>
+
+        <div class="gift-area" id="gift-area">
+            <div class="gift" id="gift">
+                <div class="gift-lid"></div>
+                <div class="gift-bow"></div>
+                <div class="gift-body"></div>
+            </div>
+        </div>
+
+        <button
+            class="arcade-btn"
+            id="open-gift-button"
+            onclick="openGift()">
+            OPEN YOUR GIFT
+        </button>
+
+        <p class="small-text" id="gift-status">
+            A little box full of love.
+        </p>
+
+        <button
+            class="arcade-btn hidden"
+            id="gift-next"
+            onclick="goToScreen('screen-photos')">
+            NEXT LEVEL
+        </button>
+    </div>
+</section>
+
+
+
+<!-- OUR MEMORIES: 12 PHOTO GALLERY -->
+<section class="screen" id="screen-photos">
+    <div class="panel memories-panel">
+        <div class="arcade-label">SPECIAL MEMORIES</div>
+        <h1 class="pixel">OUR MEMORIES</h1>
+        <p>Twelve moments, countless memories.</p>
+        <div class="memories-grid">
+            <div class="memory-card">
+                <img src="photosphoto1.jpg" alt="Memory 1">
+                <span class="memory-date">2016</span>
+             
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto2.jpg" alt="Memory 2">
+                <span class="memory-date">2016</span>
+                
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto3.jpg" alt="Memory 3">
+                <span class="memory-date">September 18, 2025</span>
+                
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto4.jpg" alt="Memory 4">
+                <span class="memory-date">October 08, 2025</span>
+                
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto5.jpg" alt="Memory 5">
+                <span class="memory-date">March 10, 2026</span>
+                
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto6.jpg" alt="Memory 6">
+                <span class="memory-date">March 11, 2026</span>
+               
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto7.jpg" alt="Memory 7">
+                <span class="memory-date">March 25, 2026</span>
+                
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto8.jpg" alt="Memory 8">
+                <span class="memory-date">September 01, 2026</span>
+                
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto9.jpg" alt="Memory 9">
+                <span class="memory-date">September 02, 2026</span>
+               
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto10.jpg" alt="Memory 10">
+                <span class="memory-date">September 29, 2026</span>
+                
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto11.jpg" alt="Memory 11">
+                <span class="memory-date">October 07, 2026</span>
+                
+            </div>
+            <div class="memory-card">
+                <img src="photosphoto12.jpg" alt="Memory 12">
+                <span class="memory-date">November 03, 2026</span>
+               
+            </div>
+        </div>
+        <button class="arcade-btn" onclick="goToScreen('screen-bonus')">
+            CONTINUE
+        </button>
+    </div>
+</section>
+
+
+<!-- BONUS LEVEL: NEW SECTION -->
+<section class="screen" id="screen-bonus">
+    <div class="panel">
+        <div class="arcade-label">BONUS LEVEL</div>
+
+        <h1 class="pixel">A LITTLE SURPRISE</h1>
+
+        <p>
+            You made it this far, Kirsten!
+            But there's one more surprise to unlock.
+        </p>
+
+        <div class="bonus-card">
+            <div class="bonus-question" id="bonus-question">
+                YOUR BIRTHDAY MESSAGE IS LOCKED
+            </div>
+
+            <div
+                class="bonus-reveal hidden"
+                id="bonus-reveal">
+                Words can't explain how grateful I
+                am to have you in my life. Thank you for making me feel special, 
+                and for all the days you made me feel loved and appreciated. I love you :p
+            </div>
+        </div>
+
+        <button
+            class="arcade-btn"
+            id="reveal-button"
+            onclick="revealBonus()">
+            UNLOCK SURPRISE
+        </button>
+
+        <br>
+
+        <button
+            class="arcade-btn hidden"
+            id="bonus-next"
+            onclick="goToScreen('screen-letter')">
+            FINAL LEVEL
+        </button>
+
+        <p class="small-text">BONUS REWARD UNLOCKED</p>
+    </div>
+</section>
+
+<!-- FINAL LETTER -->
+<section class="screen" id="screen-letter">
+    <div class="panel">
+        <div class="arcade-label">GAME COMPLETED</div>
+
+        <h1 class="pixel">YOU DID IT!</h1>
+
+        <h2>Happy Birthday, Kirsten!</h2>
+
+        <div class="letter">
+            <h2>A Letter For You</h2>
+
+            <p>
+                Happy Birthday, Kirsten!
+            </p>
+
+            <p>
+                I hope you know how much I wish the best for you, not only today but in every chapter of your life. I hope this birthday gives you a chance to slow down, appreciate yourself, and recognize all the things you've been through to reach this point. Another year has passed, and although I don't know exactly what every day has been like for you, I hope you can look back and see how much you've grown. You may not always notice it, but every experience, every challenge, and every little decision has played a part in making you who you are today.
+            </p>
+
+            <p>
+                I want to wish you more than just happiness for your birthday. I wish you peace, especially during the days when your mind feels too full and everything seems overwhelming. I wish you the strength to get through situations you don't know how to handle yet, and the patience to understand that not everything needs to happen immediately. I hope you stop being so hard on yourself whenever things don't go according to plan. You deserve to appreciate your progress without constantly thinking about how much more you still have to accomplish.
+            </p>
+
+            <p>
+                I hope you never feel like your struggles are something you have to hide. You don't always have to act like you're okay, and you don't have to carry everything on your own. It's perfectly fine to have days when you feel tired, unmotivated, or unsure of yourself. Those feelings don't make you any less capable. I hope you find comfort in knowing that you can take your time, figure things out at your own pace, and give yourself room to make mistakes. You are allowed to be a work in progress.
+            </p>
+
+            <p>
+                I genuinely hope that this year brings you closer to the things you've been wanting for yourself. Whether they're big dreams or simple things you've been wishing would happen, I hope you get the chance to experience them. I hope your efforts finally pay off, that the opportunities you receive are worth taking, and that you meet people who make your life a little better just by being part of it. More than anything, I hope you never have to question whether you're deserving of the good things that come your way.
+            </p>
+
+            <p>
+                I also hope you continue to recognize your own worth. Never feel that you need to be someone else to be accepted or appreciated. You don't have to constantly prove yourself to people, and you don't need everyone's approval to feel good about who you are. Keep the things that make you happy, pursue what genuinely interests you, and don't be afraid to walk away from anything that takes away your peace. I hope you always choose yourself when you need to, without feeling guilty about it.
+            </p>
+
+           <p>
+                If there is one thing I really wish for you, it's that life becomes kinder to you. I hope the coming months give you more reasons to smile than reasons to worry. I hope you have more days when you feel content with where you are, more moments when you realize that things are finally working out, and more experiences that remind you that life is still full of good possibilities. And whenever things don't go as expected, I hope you remember that it isn't the end of everything. There will always be another opportunity, another beginning, and another chance to do things differently.
+           </p>
+           
+            <p>
+                Please take care of yourself, Bao. Don't neglect your happiness just because you have other things to worry about. Eat well, get enough rest, enjoy the things you love, and spend time with the people who make you feel comfortable being yourself. Celebrate your achievements, no matter how small they seem, and don't forget that simply making it through difficult days is also something to be proud of.
+           </p>
+
+            <p>
+                With lots of love,
+                Glai
+            </p>
+        </div>
+
+        <button
+            class="arcade-btn"
+            onclick="restartGame()">
+            PLAY AGAIN
+        </button>
+    </div>
+</section>
+
+<script>
+
+
+const background = document.getElementById("background");
+
+for (let i = 0; i < 65; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 2 + "s";
+    background.appendChild(star);
+}
+
+
+
+function goToScreen(screenId) {
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById(screenId).classList.add("active");
+}
+
+
+
+function launchConfetti(amount = 65) {
+    const colors = [
+        "#55c8ff",
+        "#a66bff",
+        "#ff8edb",
+        "#ffffff",
+        "#f7d77a"
+    ];
+
+    for (let i = 0; i < amount; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti";
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.animationDelay = Math.random() * 1.5 + "s";
+        piece.style.animationDuration =
+            (2 + Math.random() * 2) + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 5000);
+    }
+}
+
+
+
+let blowing = false;
+let blowProgress = 0;
+let blowInterval = null;
+
+const totalCandles = 5;
+
+function startBlowing(event) {
+    if (blowing || blowProgress >= 100) return;
+
+    event.preventDefault();
+    blowing = true;
+
+    const button = document.getElementById("blow-button");
+    const status = document.getElementById("blow-status");
+
+    button.setPointerCapture?.(event.pointerId);
+    status.textContent = "Keep holding...";
+
+    blowInterval = setInterval(() => {
+        if (!blowing) return;
+
+        blowProgress += 2;
+
+        const candlesToExtinguish =
+            Math.min(
+                totalCandles,
+                Math.floor(blowProgress / 20)
+            );
+
+        for (let i = 1; i <= candlesToExtinguish; i++) {
+            const candle = document.getElementById("candle-" + i);
+            const flame = candle.querySelector(".flame");
+
+            if (!flame.classList.contains("out")) {
+                flame.classList.add("out");
+
+                const smoke = document.createElement("div");
+                smoke.className = "smoke";
+                candle.appendChild(smoke);
+
+                setTimeout(() => smoke.remove(), 1100);
+            }
+        }
+
+        if (blowProgress >= 100) {
+            finishBlowing();
+        }
+    }, 100);
+}
+
+function stopBlowing() {
+    blowing = false;
+
+    if (blowInterval) {
+        clearInterval(blowInterval);
+        blowInterval = null;
+    }
+
+    if (blowProgress < 100) {
+        document.getElementById("blow-status").textContent =
+            "Keep holding to blow out the candles!";
+    }
+}
+
+function finishBlowing() {
+    blowing = false;
+
+    if (blowInterval) {
+        clearInterval(blowInterval);
+        blowInterval = null;
+    }
+
+    document.getElementById("blow-status").textContent =
+        "All candles are out! Make your wish!";
+
+    document.getElementById("blow-button").classList.add("hidden");
+    document.getElementById("cake-next").classList.remove("hidden");
+
+    launchConfetti(80);
+}
+
+
+let flowerInterval = null;
+let giftOpened = false;
+
+function createFlower() {
+    const area = document.getElementById("gift-area");
+    const flower = document.createElement("div");
+
+    flower.className = "flower";
+
+    const flowerSymbols = ["✿", "❀", "✾", "✽", "❁"];
+
+    flower.textContent =
+        flowerSymbols[Math.floor(Math.random() * flowerSymbols.length)];
+
+    flower.style.setProperty(
+        "--x",
+        (Math.random() * 260 - 130) + "px"
+    );
+
+    flower.style.setProperty(
+        "--rotation",
+        (Math.random() * 300 - 150) + "deg"
+    );
+
+    flower.style.left = (50 + Math.random() * 20 - 10) + "%";
+    flower.style.color =
+        ["#ff8edb", "#d4a4ff", "#a5e7ff", "#fff0a8"][
+            Math.floor(Math.random() * 4)
+        ];
+
+    area.appendChild(flower);
+
+    setTimeout(() => flower.remove(), 2500);
+}
+
+function openGift() {
+    if (giftOpened) return;
+
+    giftOpened = true;
+
+    document.getElementById("gift").classList.add("open");
+
+    document.getElementById("open-gift-button").classList.add("hidden");
+
+    document.getElementById("gift-status").textContent =
+        "If I could give you the whole garden, I would. But for now, here's a little bouquet to remind you that you deserve beautiful things, today and always.";
+
+    document.getElementById("gift-next").classList.remove("hidden");
+
+    createFlower();
+
+    flowerInterval = setInterval(createFlower, 450);
+
+    launchConfetti(45);
+}
+
+
+
+let bonusUnlocked = false;
+
+function revealBonus() {
+    if (bonusUnlocked) return;
+
+    bonusUnlocked = true;
+
+    document.getElementById("bonus-question").textContent =
+        "SURPRISE UNLOCKED!";
+
+    document.getElementById("bonus-reveal").classList.remove("hidden");
+
+    document.getElementById("reveal-button").classList.add("hidden");
+
+    document.getElementById("bonus-next").classList.remove("hidden");
+
+    launchConfetti(55);
+}
+
+
+function restartGame() {
+    location.reload();
+}
+</script>
+
+</body>
+</html>
